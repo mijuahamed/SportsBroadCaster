@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MenuObject>
+
+@{
+    ViewData["Title"] = "Menus";
+    Layout = "~/Views/Shared/_CustomUserLayout.cshtml";
+}
+
+<h1>Menus</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RootId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RootId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.Id  }) |
+                    <a href="#" onclick="DeleteMenu(@Html.Raw(item.Id))"> Delete  </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script>
+    function DeleteMenu(id) {
+        if (confirm("Are you sure want to delete?")) {
+            tokenGatter().then(x => {
+                apiCall("https://localhost:44377/api/Menu/Delete?id=" + id, x.token).then(x => {
+                    location.reload();
+                });
+            });
+        }
+    }
+</script>

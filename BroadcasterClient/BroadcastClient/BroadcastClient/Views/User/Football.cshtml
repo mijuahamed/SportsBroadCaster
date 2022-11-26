@@ -1,0 +1,80 @@
+﻿@model IEnumerable<FootballObject>
+@{ 
+    Layout = "_CustomUserLayout";
+}
+@*<button onclick="search();"> Search </button>*@
+
+@*<a class="btn btn-primary" asp-action="Create"
+   asp-controller="User">Create New User</a>*@
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+   <thead>
+       <tr>
+
+           <th>
+               @Html.DisplayNameFor(model => model.title)
+           </th>
+           <th>
+               @Html.DisplayNameFor(model => model.date)
+           </th>
+           <th>
+               @*@Html.DisplayNameFor(model => model.Competition.Name)*@
+               League
+           </th>
+           <th>
+               Action
+           </th>
+
+
+
+       </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.Raw(Convert.ToDateTime(item.date).ToString("dd/MMM/yyyy"))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Competition.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Watch Now", "FootballMatchWatch", new { embed = item.embed })
+            </td>
+
+        </tr>
+        }
+    </tbody>
+
+</table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+
+    
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable({
+            "ordering": false
+        });
+        $('.dataTables_length').addClass('bs-select');
+    });
+
+    function search() {
+        var length = document.getElementsByName('dtBasicExample_length')[0].value;
+        var query = document.querySelectorAll('.form-control.form-control-sm')[1].value;
+        var li = document.querySelectorAll('.paginate_button.page-item.active')[0];
+        var page = li.querySelectorAll('a')[0].innerHTML
+        console.log("length: ", length, "query: ", query, "page: ", page);
+    }
+
+</script>
+
+        
+
+
+
+
+

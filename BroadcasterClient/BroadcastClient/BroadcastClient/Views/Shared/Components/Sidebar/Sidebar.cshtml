@@ -1,0 +1,90 @@
+﻿@model Model.ResponseModel.User.UserProfile
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<nav id="sidebar">
+    <div class="p-4 pt-5">
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(~/customs/images/logo.jpg);"></a>
+        <ul class="list-unstyled components mb-5">
+           
+                <li class="active">
+                    <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">User</a>
+                    <ul class="collapse list-unstyled" id="userSubmenu">
+                        @if (Model.UserRole.Contains("SuperAdmin"))
+                        {
+                            <li>
+                                <a asp-action="Create"
+                                   asp-controller="User">Create New User</a>
+                            </li>
+                        }
+                        @if (Model.UserRole.Contains("SuperAdmin"))
+                        {
+
+                            <li>
+                                <a asp-action="Index"
+                                   asp-controller="Report">User Table</a>
+                            </li>
+                        }
+
+                            <li>
+                                <a asp-action="Profile"
+                                   asp-controller="User">Profile</a>
+                            </li>
+
+                        </ul>
+                </li>
+            
+            @if (Model.UserRole.Contains("Person"))
+            {
+                <li class="active">
+                    <a href="#sportSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Sports</a>
+                    <ul class="collapse list-unstyled" id="sportSubmenu">
+                        <li>
+                            <a asp-action="Football"
+                               asp-controller="User"
+                               asp-route-id="World Cup">Football World Cup</a>
+                        </li>
+                        <li>
+                            <a asp-action="Football"
+                               asp-controller="User"
+                               asp-route-id="">All Match List</a>
+                        </li>
+
+                    </ul>
+                </li>
+
+            }
+            @if (Model.UserRole.Contains("SuperAdmin"))
+            {
+                <li class="active">
+                    <a href="#roleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Roles</a>
+                    <ul class="collapse list-unstyled" id="roleSubmenu">
+                        <li>
+                            <a asp-action="CreateRole"
+                               asp-controller="UserRole">Create New Role</a>
+                        </li>
+                        <li>
+                            <a asp-action="Roles"
+                               asp-controller="UserRole">Roles Table</a>
+                        </li>
+
+                    </ul>
+                </li>
+            }
+        </ul>
+
+        <div class="footer">
+            <p>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+
+    </div>
+</nav>
+

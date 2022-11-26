@@ -1,0 +1,13 @@
+﻿@model Model.ResponseModel.Football.FootballResponseModel
+
+@{
+    ViewData["Title"] = "FootballMatchWatch";
+    Layout = "~/Views/Shared/_CustomUserLayout.cshtml";
+}
+
+
+<div class="card-footer">
+    <a class="btn btn-primary" asp-action="Football"
+       asp-controller="User">Back to List</a>
+</div>
+@Html.Raw(Model.embed)

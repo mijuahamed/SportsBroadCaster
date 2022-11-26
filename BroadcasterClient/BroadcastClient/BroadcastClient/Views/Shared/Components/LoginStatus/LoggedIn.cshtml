@@ -1,0 +1,16 @@
+﻿
+<style>
+ 
+</style>
+
+<input id="btnLogoff" class="btn btn-success pull-right"
+       type="button" value="Log Off" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+    $('#btnLogoff').click(function () {
+        sessionStorage.removeItem('accessToken');
+    });
+    
+</script>

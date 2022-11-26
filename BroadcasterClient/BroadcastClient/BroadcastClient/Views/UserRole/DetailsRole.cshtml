@@ -1,0 +1,30 @@
+﻿@model Model.ResponseModel.RoleDetailsResponseModel
+
+@{
+    ViewData["Title"] = "DetailsRole";
+    Layout = "_CustomUserLayout";
+}
+
+<h1>DetailsRole</h1>
+
+<div>
+    <h4>RoleDetailsResponseModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RoleName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RoleName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Roles">Back to List</a>
+</div>

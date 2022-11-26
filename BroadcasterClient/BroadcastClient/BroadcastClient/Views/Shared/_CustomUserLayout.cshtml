@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Roles";
+    Layout = "_CustomLayout";
+}
+
+<div class="wrapper d-flex align-items-stretch">
+    @await Component.InvokeAsync("Sidebar")
+
+    <div id="content" class="p-4 p-md-5">
+        @await Component.InvokeAsync("Topbar")
+        @RenderBody()
+    </div>
+</div>
+
+
+<script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type = "text/javascript" src="~/js/API_Service.js"></script>
+
+@RenderSection("Scripts", required: false)
